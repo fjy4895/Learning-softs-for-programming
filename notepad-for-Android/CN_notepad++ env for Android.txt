@@ -1,0 +1,49 @@
+一、环境变量
+ANT_HOME
+	D:\Softs\apache-ant-1.9.7
+
+JAVA_HOME
+	C:\Program Files\Java\jdk1.8.0_101
+
+JRE_HOME
+	C:\Program Files\Java\jre1.8.0_101
+
+CLASSPATH
+.;%JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar;%JAVA_HOME%\lib\dt.jar;%JRE_HOME%\lib;%JRE_HOME%\lib\dt.jar;%ANT_HOME%\lib;%ANT_HOME%\lib\ant.jar;
+
+Android_SDK_HOME    虚拟机存放位置
+	C:\Users\admin
+
+Android_SDK
+	D:\Softs\adt-bundle-windows-x86_64-20140702\sdk
+
+ANDROID_ENV_PATH
+	%Android_SDK%\tools;%Android_SDK%\platform-tools;%JAVA_HOME%\bin;%JRE_HOME%\bin;%ANT_HOME%\bin;
+
+
+二、创建虚拟机 Xa
+ android create avd -n Xa -t 1 -c 52M -p C:\AVD\ -s WVGA800
+-n虚拟机名（此处为Xa），-t指定目标机ID(android list targets查看，由所安装的platforms和system-images决定)，
+-c指SD储存卡容量大小（此处52Mb），-s指创建新的AVD皮肤skins（此处WVGA800），-p新创建的AVD的路径（C:\AVD）
+
+启动虚拟机
+emulator -avd Xa
+
+三、创建步骤
+1、cmd
+2、cd d:\fjy\softroom\android_ant
+3、使用命令工具创建一个新工程
+ android create project -k zyf.hello -n HelloAndroid -t 1 -a AntActivity -p ./Hello
+-k指定包名，-n指定项目名，-t指定目标机ID(android list targets查看)， -a指定应用名
+4、cd Hello
+5、ant debug
+6、emulator -avd Nexus_4_API_17
+虚拟机名为Nexus_4_API_17
+7、cd bin
+8、adb install HelloAndroid-debug.apk
+9、在模拟器中运行AntActivity
+
+四、其它
+ant的build模板在以下目录，修改后可做更多设置，修改前先备份
+D:\Softs\adt-bundle-windows-x86_64-20140702\sdk\tools\ant\build.xml
+
